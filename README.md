@@ -2,6 +2,8 @@
 
 # pocket-id
 
+NOTE: This has been forked off a non maintained version by hobbit44, which doesnt work as of v1
+
 ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fpocket-id%2Fpocket-id%2Freleases%2Flatest&query=%24.name&label=Version)![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 ![AppVersion](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fpocket-id%2Fpocket-id%2Freleases%2Flatest&query=%24.name&label=Version)
 
@@ -75,6 +77,23 @@ The command removes all the Kubernetes components associated with the chart and 
 | tolerations | list | `[]` |  |
 | volumeMounts | list | `[]` | Additional volumeMounts on the pod definition. |
 | volumes | list | `[]` | Additional volumes on the pod definition. |
+
+## Example `values.yaml`
+```
+config:
+  appUrl: https://pocketid.example.uk
+ingress:
+  enabled: "true"
+  hosts:
+    - host: pocketid.example.uk
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: certbot-tls
+      hosts:
+        - pocketid.example.uk
+```
 
 ### Todo
 
